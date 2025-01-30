@@ -36,6 +36,7 @@
         const form = document.getElementById('form');
         async function hanldeSubmit(e){
             e.preventDefault();
+            console.log('sending req');
             try{
                 const formData = new FormData(form);
                 const sendData = await fetch('https://form-app-4nsq.onrender.com/form/submission', {
