@@ -39,9 +39,17 @@
             console.log('sending req');
             try{
                 const formData = new FormData(form);
+                 // Convert FormData to a plain object
+            const formObject = Object.fromEntries(formData.entries());
+            
+            // Convert the object to a JSON string
+            const jsonData = JSON.stringify(formObject);
                 const sendData = await fetch('https://form-app-4nsq.onrender.com/form/submission', {
                     method: 'post',
-                    body: formData,
+                    headers:{
+                        'Content-Type': 'application/json'
+                    }
+                    body: jsonData,
                 })
                 alert('form submitted successfully');
             }catch(err){
