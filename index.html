@@ -32,5 +32,22 @@
             Submit
         </button>
     </form>
+    <script>
+        const form = document.getElementById('form');
+        async function hanldeSubmit(e){
+            e.preventDefault();
+            try{
+                const formData = new FormData(form);
+                const sendData = await fetch('https://form-app-4nsq.onrender.com/form/submission', {
+                    method: 'post',
+                    body: formData,
+                })
+                alert('form submitted successfully');
+            }catch(err){
+                alert(`form cannot be submitted error: ${err.message}`);
+            }
+        }
+        form.addEventListener('submit',hanldeSubmit);
+    </script>
 </body>
 </html>
